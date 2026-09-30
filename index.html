@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Al Zaeeim Foods | مطعم الزعيم</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --yellow: #ffd000;
+            --yellow-dark: #d9aa00;
+            --black: #080808;
+            --dark: #111111;
+            --card: #171717;
+            --border: #292929;
+            --white: #ffffff;
+            --gray: #999999;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background:
+                linear-gradient(135deg, #080808 25%, #0d0d0d 25%, #0d0d0d 50%, #080808 50%, #080808 75%, #0d0d0d 75%);
+            background-size: 40px 40px;
+            color: var(--white);
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: relative;
+            overflow: hidden;
+
+            background: #080808;
+            border-bottom: 5px solid var(--yellow);
+
+            min-height: 350px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+        header::before {
+            content: "";
+
+            position: absolute;
+            width: 450px;
+            height: 450px;
+
+            border: 2px solid rgba(255, 208, 0, 0.15);
+
+            transform: rotate(45deg);
+        }
+
+        header::after {
+            content: "";
+
+            position: absolute;
+            width: 300px;
+            height: 300px;
+
+            border: 2px solid rgba(255, 208, 0, 0.10);
+
+            transform: rotate(45deg);
+        }
+
+        .logo-box {
+            position: relative;
+            z-index: 2;
+
+            width: 170px;
+            height: 170px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #000;
+
+            border: 4px solid var(--yellow);
+
+            transform: rotate(45deg);
+
+            margin-bottom: 45px;
+
+            box-shadow:
+                0 0 0 8px #111,
+                0 0 0 10px var(--yellow);
+        }
+
+        .logo {
+            width: 135px;
+            height: 135px;
+
+            object-fit: contain;
+
+            transform: rotate(-45deg);
+        }
+
+        header h1 {
+            position: relative;
+            z-index: 2;
+
+            color: var(--yellow);
+
+            font-size: clamp(30px, 6vw, 58px);
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 8px;
+        }
+
+        header h2 {
+            position: relative;
+            z-index: 2;
+
+            font-size: clamp(24px, 4vw, 38px);
+
+            font-weight: 700;
+        }
+
+        .slogan {
+            position: relative;
+            z-index: 2;
+
+            margin-top: 18px;
+
+            color: var(--gray);
+
+            font-size: 17px;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .nav {
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            background: rgba(8, 8, 8, 0.96);
+
+            border-bottom: 2px solid var(--yellow);
+
+            padding: 14px;
+
+            display: flex;
+            justify-content: center;
+
+            gap: 10px;
+
+            overflow-x: auto;
+        }
+
+        .nav button {
+            flex: 0 0 auto;
+
+            background: transparent;
+
+            color: white;
+
+            border: 2px solid var(--yellow);
+
+            padding: 11px 18px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            clip-path: polygon(
+                8px 0,
+                100% 0,
+                100% calc(100% - 8px),
+                calc(100% - 8px) 100%,
+                0 100%,
+                0 8px
+            );
+
+            transition: 0.2s;
+        }
+
+        .nav button:hover,
+        .nav button.active {
+            background: var(--yellow);
+            color: #000;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            width: min(1250px, 94%);
+
+            margin: auto;
+
+            padding: 50px 0;
+        }
+
+        .section {
+            margin-bottom: 70px;
+        }
+
+        .section-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .section-number {
+            background: var(--yellow);
+
+            color: #000;
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            transform: skew(-10deg);
+        }
+
+        .section-title {
+            font-size: clamp(25px, 4vw, 36px);
+
+            color: white;
+
+            font-weight: 900;
+        }
+
+        .section-line {
+            height: 3px;
+
+            flex: 1;
+
+            background: linear-gradient(
+                to left,
+                var(--yellow),
+                transparent
+            );
+        }
+
+        /* =========================
+           MENU GRID
+        ========================= */
+
+        .menu-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 16px;
+        }
+
+        /* =========================
+           FOOD CARD
+        ========================= */
+
+        .food-card {
+            position: relative;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            min-height: 115px;
+
+            padding: 22px;
+
+            overflow: hidden;
+
+            transition: 0.2s;
+
+            clip-path: polygon(
+                0 0,
+                calc(100% - 14px) 0,
+                100% 14px,
+                100% 100%,
+                14px 100%,
+                0 calc(100% - 14px)
+            );
+        }
+
+        .food-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            right: 0;
+
+            width: 5px;
+            height: 100%;
+
+            background: var(--yellow);
+        }
+
+        .food-card:hover {
+            transform: translateY(-4px);
+
+            border-color: var(--yellow);
+
+            background: #1d1d1d;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .food-name {
+            font-size: 20px;
+
+            font-weight: 800;
+
+            padding-left: 80px;
+
+            margin-bottom: 9px;
+        }
+
+        .food-description {
+            color: var(--gray);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            padding-left: 80px;
+        }
+
+        .price {
+            position: absolute;
+
+            left: 15px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            min-width: 65px;
+
+            text-align: center;
+
+            padding: 8px 9px;
+
+            background: var(--yellow);
+
+            color: #000;
+
+            font-size: 16px;
+
+            font-weight: 900;
+
+            clip-path: polygon(
+                6px 0,
+                100% 0,
+                100% calc(100% - 6px),
+                calc(100% - 6px) 100%,
+                0 100%,
+                0 6px
+            );
+        }
+
+        /* =========================
+           SPECIAL OFFERS
+        ========================= */
+
+        .offers .food-card {
+            border: 2px solid #3b3300;
+        }
+
+        .offers .food-card::after {
+            content: "عرض";
+
+            position: absolute;
+
+            top: 10px;
+            right: 15px;
+
+            color: var(--yellow);
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            background: var(--yellow);
+
+            color: #000;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            clip-path: polygon(
+                0 15px,
+                15px 0,
+                100% 0,
+                100% calc(100% - 15px),
+                calc(100% - 15px) 100%,
+                0 100%
+            );
+        }
+
+        .contact h2 {
+            font-size: 30px;
+
+            margin-bottom: 20px;
+        }
+
+        .phone {
+            display: inline-block;
+
+            background: #000;
+
+            color: var(--yellow);
+
+            text-decoration: none;
+
+            padding: 12px 25px;
+
+            margin: 5px;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #050505;
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #777;
+
+            border-top: 1px solid #222;
+        }
+
+        footer strong {
+            color: var(--yellow);
+        }
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                min-height: 320px;
+            }
+
+            .logo-box {
+                width: 130px;
+                height: 130px;
+
+                margin-bottom: 35px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .food-card {
+                min-height: 105px;
+            }
+
+            .food-name {
+                font-size: 18px;
+            }
+
+            .price {
+                font-size: 14px;
+                min-width: 60px;
+            }
+
+            .nav {
+                justify-content: flex-start;
+            }
+
+            main {
+                padding-top: 35px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo-box">
+
+        <!-- اللوجو -->
+        <img
+            src="image/image44.jpeg"
+            class="logo"
+            alt="Al Zaeeim Foods Logo"
+        >
+
+    </div>
+
+    <h1>Al Zaeeim Foods</h1>
+
+    <h2>مطعم الزعيم</h2>
+
+    <p class="slogan">
+        كل أكلة... حكاية نكهة
+    </p>
+
+</header>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="nav">
+
+    <button onclick="scrollToSection('sandwiches')">
+        سندويشات
+    </button>
+
+    <button onclick="scrollToSection('million')">
+        عروض المليون
+    </button>
+
+    <button onclick="scrollToSection('chicken')">
+        عروضات الفروج
+    </button>
+
+    <button onclick="scrollToSection('meals')">
+        عروضات الوجبات
+    </button>
+
+</nav>
+
+
+<main>
+
+
+<!-- =========================
+     SANDWICHES
+========================= -->
+
+<section class="section" id="sandwiches">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            01
+        </div>
+
+        <h2 class="section-title">
+            سندويشات
+        </h2>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+
+        <div class="food-card">
+            <h3 class="food-name">صنية شاورما</h3>
+            <p class="food-description">صنية شاورما</p>
+            <span class="price">250</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">شاورما عادية</h3>
+            <p class="food-description">شاورما</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">صنية 7 كعك شاورما</h3>
+            <p class="food-description">7 كعك شاورما</p>
+            <span class="price">300</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">شاورما كبيرة</h3>
+            <p class="food-description">شاورما كبيرة</p>
+            <span class="price">1250</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">صنية شاورما تركي</h3>
+            <p class="food-description">شاورما تركي</p>
+            <span class="price">350</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">شاورما اكسترا</h3>
+            <p class="food-description">شاورما اكسترا</p>
+            <span class="price">150</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">شاورما صاروخ</h3>
+            <p class="food-description">شاورما صاروخ</p>
+            <span class="price">350</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">كرسبي</h3>
+            <p class="food-description">دجاج كرسبي</p>
+            <span class="price">450</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">برغر لحمة</h3>
+            <p class="food-description">برغر لحم</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">برغر لحمة دوبل</h3>
+            <p class="food-description">دبل برغر لحم</p>
+            <span class="price">1100</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">فاهيتا</h3>
+            <p class="food-description">فاهيتا</p>
+            <span class="price">1100</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">فرنسسكو</h3>
+            <p class="food-description">فرنسسكو</p>
+            <span class="price">450</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">تشكن ساب</h3>
+            <p class="food-description">تشكن ساب</p>
+            <span class="price">350</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">طاووق</h3>
+            <p class="food-description">طاووق</p>
+            <span class="price">400</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">طاووق مع جبنة</h3>
+            <p class="food-description">طاووق مع جبنة</p>
+            <span class="price">350</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">كباب</h3>
+            <p class="food-description">كباب</p>
+            <span class="price">350</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">شقف</h3>
+            <p class="food-description">شقف</p>
+            <span class="price">350</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">سودة</h3>
+            <p class="food-description">سودة</p>
+            <span class="price">300</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">اسكلوب</h3>
+            <p class="food-description">اسكلوب</p>
+            <span class="price">350</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">زنجر</h3>
+            <p class="food-description">زنجر</p>
+            <span class="price">300</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">برغر تشكن</h3>
+            <p class="food-description">برغر دجاج</p>
+            <span class="price">300</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">برغر كرسبي</h3>
+            <p class="food-description">برغر كرسبي</p>
+            <span class="price">450</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">تشيز برغر</h3>
+            <p class="food-description">تشيز برغر</p>
+            <span class="price">400</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">برغر سجق</h3>
+            <p class="food-description">برغر سجق</p>
+            <span class="price">300</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">بطاطا</h3>
+            <p class="food-description">بطاطا</p>
+            <span class="price">150</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">بطاطا كبيرة</h3>
+            <p class="food-description">بطاطا كبيرة</p>
+            <span class="price">200</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MILLION OFFERS
+========================= -->
+
+<section class="section offers" id="million">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            02
+        </div>
+
+        <h2 class="section-title">
+            عروض المليون
+        </h2>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة كباب</h3>
+            <p class="food-description">عرض كباب</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">4 شاورما</h3>
+            <p class="food-description">أربع شاورما</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">4 سندويشات منوعة</h3>
+            <p class="food-description">سندويشات منوعة</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">3 برغر</h3>
+            <p class="food-description">ثلاث برغر</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">3 كباب</h3>
+            <p class="food-description">ثلاث كباب</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">4 كرسبي</h3>
+            <p class="food-description">أربع كرسبي</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">3 شقف</h3>
+            <p class="food-description">ثلاث شقف</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">3 وجبات شاورما</h3>
+            <p class="food-description">ثلاث وجبات شاورما</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة اسكلوب</h3>
+            <p class="food-description">اسكلوب</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة تشكن برغر</h3>
+            <p class="food-description">تشكن برغر</p>
+            <span class="price">مليون</span>
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CHICKEN
+========================= -->
+
+<section class="section" id="chicken">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            03
+        </div>
+
+        <h2 class="section-title">
+            عروضات الفروج
+        </h2>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+
+        <div class="food-card">
+            <h3 class="food-name">2 فروج غاز</h3>
+            <p class="food-description">فروج غاز</p>
+            <span class="price">1800</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">2 فروج فحم</h3>
+            <p class="food-description">فروج فحم</p>
+            <span class="price">مليونين</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">2 فروج بروستد</h3>
+            <p class="food-description">فروج بروستد</p>
+            <span class="price">مليونين</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">كيلو شاورما</h3>
+            <p class="food-description">كيلو شاورما</p>
+            <span class="price">1800</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">كيلو مشاوي مشكل</h3>
+            <p class="food-description">مشاوي مشكلة</p>
+            <span class="price">2250</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة شاورما تركي</h3>
+            <p class="food-description">شاورما تركي</p>
+            <span class="price">750</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MEALS
+========================= -->
+
+<section class="section" id="meals">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            04
+        </div>
+
+        <h2 class="section-title">
+            عروضات الوجبات
+        </h2>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة مشاوي مشكل</h3>
+            <p class="food-description">مشاوي مشكلة</p>
+            <span class="price">750</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة شاورما</h3>
+            <p class="food-description">شاورما</p>
+            <span class="price">400</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة كرسبي 10 قطع</h3>
+            <p class="food-description">10 قطع كرسبي</p>
+            <span class="price">1250</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة شاورما دوبل</h3>
+            <p class="food-description">شاورما دوبل</p>
+            <span class="price">550</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة شاورما تريبل</h3>
+            <p class="food-description">شاورما تريبل</p>
+            <span class="price">750</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة فاهيتا</h3>
+            <p class="food-description">فاهيتا</p>
+            <span class="price">550</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة كرسبي</h3>
+            <p class="food-description">كرسبي</p>
+            <span class="price">450</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة كرسبي 5 قطع</h3>
+            <p class="food-description">5 قطع كرسبي</p>
+            <span class="price">700</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة طاووق</h3>
+            <p class="food-description">طاووق</p>
+            <span class="price">450</span>
+        </div>
+
+
+        <div class="food-card">
+            <h3 class="food-name">وجبة برغر</h3>
+            <p class="food-description">برغر</p>
+            <span class="price">500</span>
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact">
+
+    <h2>اطلب الآن</h2>
+
+    <a
+        href="tel:03986700"
+        class="phone">
+        03 986 700
+    </a>
+
+    <a
+        href="tel:03715250"
+        class="phone">
+        03 715 250
+    </a>
+
+</section>
+
+
+<footer>
+
+    <strong>Al Zaeeim Foods</strong>
+
+    <br>
+
+    مطعم الزعيم
+
+    <br><br>
+
+    © 2026
+
+</footer>
+
+
+<script>
+
+    function scrollToSection(id) {
+
+        document
+            .getElementById(id)
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
